@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta class="name">
+  <title>Run greet()</title>
+</head>
+
+<body>
+
+  <h2>Greeting App</h2>
+  <button onclick="data(200000)">Check amount</button>
+
+  <ul id="item-list">
+    <li data-item="Apple">Apple</li>
+    <li data-item="Orange">Orange</li>
+    <li data-item="Carrot">Carrot</li>
+  </ul>
+
+  <script>
+
+    //  ============ This Keyword =========
+
+
+    // ---------Arrow Function ---------------
+
+    const objVal = {
+      x: 30,
+      a: function () {
+        // console.log(this)
+        const b = () => {
+          console.log(this);
+        }
+        b();
+      }
+    }
+
+    objVal.a();
+
+    const studentOne = {
+      name: "Deepak",
+      PrintName: function () {
+        console.log(this.name)
+      }
+    }
+
+    studentOne.PrintName();
+
+    const studentTwo = {
+      name: "Deekshith",
+    };
+
+
+    studentOne.PrintName.call(studentTwo);
+
+    // =============== Error Handling ===============
+
+    const API_URL = "https://jsonplaceholder.typicode.com/photos";
+
+    async function handlePhoto() {
+      try {
+        const datapick = await fetch(API_URL);
+        const dataPickVal = await datapick.json();
+        console.log(dataPickVal);
+      }
+      catch (err) {
+        console.error("Invalid API Call", err.message);
+      }
+    }
+    handlePhoto();
+
+
+    // ============= this below & above code are same as error handling ===============
+
+    async function handleSecondPhoto() {
+      const dataTwoPick = await fetch(API_URL);
+      const dataTwoPickVal = await dataTwoPick.json();
+      console.log(dataTwoPickVal);
+    }
+
+    handleSecondPhoto().catch(err => console.log("Ivalid API Call", err));
+    // ======== Fetch Rsponse ==================
+
+    // fecth() => Response.json => jsonValue
+
+    const API_Data = "https://api.github.com/users/deekshith-k";
+
+    async function handleData() {
+      const dataVal = await fetch(API_Data);
+      const jsonValue = await dataVal.json();
+      console.log(jsonValue);
+    }
+
+
+
+    handleData();
+    // ============= Promise Method =============
+
+
+    const datas = new Promise((resolve, reject) => {
+      resolve("Data is Valid");
+    })
+
+    function result() {
+      datas.then((res) => console.log(res));
+    }
+
+    result();
+
+    // =========== Async & Await ========={ Await will wait fro execute first promise and then proceed further }{ Js Engine will wait for promise to resolve} { Function Excution is been suspended}
+
+    // ======= 01 ===============
+
+    const asyawait = new Promise((resolve, reject) => {
+      resolve("Async And Await Working");
+    })
+
+    async function validateaa() {
+      // return asyawait;
+      const value = await asyawait;
+      console.log(value);
+    }
+
+    validateaa();
+
+    // validateaa().then(value => console.log(value));
+
+    // ========== 02 =============
+
+    const deek = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Deekshith Kumar")
+      }, 5000);
+    });
+
+    const deek1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Deekshtih is good person");
+      }, 3000);
+    })
+
+    async function learn() {
+      console.log("Learning Python");
+
+      const js = await deek;
+      console.log(js);
+      console.log("Learning Javascript");
+
+      const js1 = await deek1;
+      console.log("Namastea Learning");
+      console.log(js1);
+
+    }
+
+    learn();
+
+    // ============= 03 ================== 
+
+    const dataOne = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Learnig Javascript Begining")
+      }, 2000);
+    })
+
+    const dataTwo = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Learning Javascript Intermediate");
+      }, 4000);
+    })
+
+    async function EducateMode() {
+      const ValOne = await dataOne;
+      console.log(ValOne);
+
+      const ValTwo = await dataTwo;
+      console.log(ValTwo);
+    }
+
+    EducateMode();
+
+    // ===========Async Function==============
+
+
+    const Pro = new Promise((resolve, reject) => {
+      resolve("Async Loading Perfect")
+    })
+
+    async function demoData() {
+      return Pro;
+    }
+
+    const getData = demoData();
+
+    getData.then((res) => console.log(res));
+
+    // ==========Promise API ==============
+
+    // 1. Promise.all -->  Return when all get excute if its sucess or fast fail technique 
+    //    (if any promise will reject will return on there time period)
+
+    // 2.  Promise.allsetteled -->  Wait for all the promise will get execute even if its resolve or reject
+
+    // 3. Promise.race -->  Which return an which is excuted first
+
+    // 4. Promise.any --> Which return to wait untill get an Success Return promise
+    //     { If all the promises rejected then it will AggregateError Error msg}
+
+    const P1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject("P1 Suceess")
+      }, 2000);
+    })
+
+    const P2 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject("P2 Success")
+      }, 1000);
+    })
+
+    const P3 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject("P3 Success")
+      }, 1000);
+    })
+
+    Promise.any([P1, P2, P3]).then((res) => {
+      console.log(res);
+    })
+      .catch((err) => {
+        console.error(err);
+        console.log(err.errors)
+      })
+    // Promises--------------------
+
+
+    // ===============01===================
+
+    const cart = ["Shoe, Shirt, Pants"];
+
+    createOrder(cart, function (OrderID) {
+      proceedToPayment(OrderID, function (paymentInfo) {
+        showOrderSummery(paymentInfo, function (sucessInfo) {
+          succesOrder(sucessInfo, function () {
+            deliverStatus();
+          })
+        })
+      })
+    })
+
+    function createOrder(cart) {
+      console.log("Creating order with cart:", cart);
+      return new Promise((resolve, reject) => {
+        const OrderID = generateOrderID();
+        // console.log(OrderID);
+        setTimeout(() => {
+          resolve(OrderID);
+        }, 1000);
+      });
+    }
+
+    function generateOrderID() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let result = 'ORDER-';
+      for (let i = 0; i < 6; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return result;
+    }
+
+
+
+    function proceedToPayment(OrderID) {
+      return new Promise(resolve => {
+        console.log("Processing payment for", OrderID);
+        setTimeout(() => resolve("PaymentInfo123"), 1000);
+      });
+    }
+
+    function showOrderSummery(paymentInfo) {
+      return new Promise(resolve => {
+        console.log("Showing summary for", paymentInfo);
+        setTimeout(() => resolve("Sucess"), 1000);
+      });
+    }
+
+    function succesOrder(sucessInfo) {
+      return new Promise(resolve => {
+        console.log("Order successful!", sucessInfo);
+        setTimeout(() => resolve(""), 1000);
+      });
+    }
+
+    function deliverStatus() {
+      console.log("Delivery in Some days");
+    }
+
+    /// below the 84 is also same as 78 line code as call promise 
+
+    // const promises = createOrder(cart);
+    // promises.then(function(OrderID){
+    //   proceedToPayment(OrderID);
+    // })
+
+    createOrder(cart)
+      .then(OrderID => proceedToPayment(OrderID))  // { can call both below and this also }
+      // .then(function (OrderID){
+      //   return proceedToPayment(OrderID);
+      // })
+
+      // .then(OrderID => Promise.reject(new Error("Something went wrong")))
+
+      .then(paymentInfo => showOrderSummery(paymentInfo))
+      .then((sucessInfo) => succesOrder(sucessInfo))
+      .then(() => deliverStatus())
+      .catch(err => console.error(err.message));
+
+
+    // =============== 02 ==============================
+
+    function setOrderMenu(menus) {
+      return new Promise(function (resolve, reject) {
+        console.log("Set up for:", menus);
+        setTimeout(function () {
+          resolve("menu123");
+        }, 1000);
+      });
+    }
+
+
+    const Menu = ["Dosa", "Idly", "Voda"];
+    const promise = setOrderMenu(Menu);
+
+    promise.then(function (menuId) {
+      console.log("order Set upped ", menuId);
+    })
+    // ====================================
+
+
+    // CAll Back function
+
+    // ------Example 01-------------------------------
+
+    function onItemSelected(itemName) {
+      console.log("You selected Item" + itemName);
+    }
+
+    document.querySelectorAll('#item-list li').forEach(function (item) {
+      item.addEventListener('click', function () {
+        const itemName = this.innerHTML;
+        onItemSelected(itemName);
+      });
+    });
+
+
+    // -------------------Example 02----------------------------
+
+    setOrderMenu(Menu, function () {
+      console.log("Ordersetuped");
+      cookOrderMenu(function () {
+        console.log("Menu Cooking");
+        deliverFood(function () {
+          console.log("Deliver Food");
+        })
+      })
+    })
+
+
+  </script>
+  <footer>
+    <address>Heloo Tst Git</address>
+  </footer>
+</body>
+
+</html>

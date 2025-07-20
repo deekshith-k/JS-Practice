@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Password Match Form</title>
+  <style>
+    form {
+      max-width: 300px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: Arial, sans-serif;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: -10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="registerForm">
+    <label for="email">Email:</label>
+    <input type="email" id="email" required />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" required minlength="6" />
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" required minlength="6" />
+
+    <div id="message" class="error"></div>
+
+    <button type="submit">Register</button>
+  </form>
+  <button id="clicked">Press Me</button>
+  <script>
+    const form = document.getElementById('registerForm');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', function (e) {
+      if (password.value !== confirmPassword.value) {
+        e.preventDefault();
+        message.textContent = 'Passwords do not match.';
+      } else {
+        message.textContent = 'Thank You';
+      }
+    });
+
+
+    // -----------------------------------------------------------
+    //map , reduce , filter
+
+// ------------ 01 ----------------
+
+    const num = [1, 37, 4, 5];
+
+    const outputOne = num.reduce(function (acc, curr) {
+      acc = acc + curr;
+      return acc;
+    }, 0);
+
+    console.log(outputOne);
+
+    
+
+    // --------- 02 --------------
+  const numbers = [2,1,5,1,4,2,4];
+
+  // const Min = numbers.reduce(function (acc, curr){
+  //   if(acc > curr){
+  //     acc = curr;
+  //   }
+  //   return acc
+  // }, numbers[0])
+
+  // console.log(Min)
+
+    // ---------------------- Arrow Function -----------------
+    
+  const Duplicate = numbers.reduce((acc,curr) =>{ (acc.seen.has(curr) ? acc.duplicate.add(curr) : acc.seen.add(curr)); return acc}, { seen : new Set(), duplicate : new Set()})
+  console.log(Array.from(Duplicate.duplicate))
+
+  // ==============================================
+
+    function findSum(num) {
+      let sum = 0;
+      for (let i = 0; i < num.length; i++) {
+        sum = sum + num[i];
+      }
+      return sum;
+    }
+    console.log(findSum(num));
+
+    function sum(x) {
+      return x + 10;
+    }
+
+
+    const output = num.map(sum);
+    const outbin = num.map((x) => x.toString(2));
+
+    const outputbin = num.map(function binary(x) {
+      return x.toString(2);
+    });
+    console.log(output);
+    console.log(outputbin);
+    console.log(outbin);
+
+    // higher order function
+    const radiusOne = [1, 2, 3, 4];
+
+    const area = function (radius) {
+      return Math.PI * radius * radius;
+    }
+
+    Array.prototype.calculate = function (logic) {
+      const output = [];
+      for (let i = 0; i < this.length; i++) {
+        output.push(logic(this[i]));
+      }
+      return output;
+    }
+    console.log(radiusOne.calculate(area));
+
+
+
+    const calculate = function (radiusOne, logic) {
+      const output = [];
+      for (i = 0; i < radiusOne.length; i++) {
+        output.push(logic(radiusOne[i]));
+      }
+      return output;
+    }
+
+    console.log(calculate(radiusOne, area));
+
+
+
+    let radius = [10, 20, 30, 40];
+
+    var calculateArea = function (radius) {
+      const output = [];
+      for (let i = 0; i < radius.length; i++) {
+        output.push(Math.PI * radius[i] * radius[i]);
+      }
+      return output;
+    };
+
+    console.log(calculateArea(radius));
+
+    console.log("start");
+
+    setTimeout(function ab() {
+      console.log("Hello WOrld");
+    }, 5000);
+
+    console.log("Stop")
+
+    //Fetch (Promises)
+
+    console.log("start");
+    fetch("https://jsonplaceholder.typicode.com/photos").then(function abz() {
+      console.log("Netflix Data");
+    });
+    console.log("End");
+
+
+    /// Event Listerner
+
+    document.getElementById("clicked").addEventListener("click", function () {
+      console.log("You Pressed Me");
+    });
+
+    // Call Back Functions
+
+    setTimeout(() => {
+      console.log("TIme");
+    }, 2000);
+
+    function x(y) {
+      console.log("X is prints");
+      y();
+    }
+    x(function y() {
+      console.log("y is Print");
+    });
+
+    // --------------------------------
+
+    var a = function () {
+      return function abc() {
+
+      }
+    }
+    console.log(a());
+
+    // ------------------------------------
+
+    var sayHi = function () {
+      console.log("Hi");
+    }
+    // sayHi();
+
+    function fn(greet) {
+     return greet();
+    }
+    fn(sayHi);
+
+    function getKit() {
+      return function () {
+        console.log("Laptop recieved");
+      };
+    }
+
+    // getKit();
+    let itemDevice = getKit();
+    itemDevice();
+
+    function z() {
+      var b = 100;
+      function y() {
+        var a = 7;
+        function x() {
+          console.log(a, b);
+        }
+        x();
+      }
+      y();
+    }
+    z();
+
+// =========================================
+
+    function b() {
+      for (let i = 0; i <= 5; i++) {
+        setTimeout(function () {
+          console.log(i);
+        }, i * 2000);
+      }
+    }
+    b();
+
+    var data = (number) => {
+      console.log("Pending amount:" + number);
+    }
+    data(1000);
+    
+    a();
+    function a() {
+      var b = 1;
+      c();
+      function c() {
+        console.log("number verified");
+      }
+      console.log(b);
+    }
+
+  </script>
+</body>
+
+</html>
