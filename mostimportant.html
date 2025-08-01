@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Most Important Things</title>
+</head>
+
+<body>
+    <h2>JS Just Practice Things</h2>
+</body>
+
+<script>
+
+// =========================================================
+
+    const marks = [
+        { StudentID: '001', StudentName: 'Deekshith', Subject: 'Maths', Marks: 90 },
+        { StudentID: '002', StudentName: 'Vishnu', Subject: 'Science', Marks: 85 },
+        { StudentID: '003', StudentName: 'Kumar', Subject: 'Social', Marks: 40 }
+    ]
+
+    const minMarks = [];
+
+    for (let i = 0; i < marks.length; i++) {
+        if (marks[i].Marks < 50) {
+            minMarks.push(marks[i]);
+        }
+    }
+    console.log(marks);
+    console.log(minMarks);
+
+// ==========================================================
+
+let numbers = "2.345";
+
+var newNum = Number(numbers);
+console.log(typeof newNum);
+console.log(newNum);
+
+
+
+
+</script>
+
+</html>
