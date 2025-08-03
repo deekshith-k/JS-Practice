@@ -31,7 +31,7 @@
     console.log(marks);
     console.log(minMarks);
 
-// ==========================================================
+// ==================CHAI AUR CODE JS=========================
 
 let numbers = "2.345";
 
@@ -39,9 +39,50 @@ var newNum = Number(numbers);
 console.log(typeof newNum);
 console.log(newNum);
 
+// console.log( ( 12 * 2) / "30"); // Concatenation
 
+// console.log(+"");
+
+// console.log(undefined > 0); 
+
+
+// let hello = "qqq";
+// console.log("02" == 2); 
+
+
+const id= BigInt("0001")
+const OnemoreId= BigInt("0001")
+console.log(id === OnemoreId);
+console.log(typeof OnemoreId) // false, because symbols are unique
+
+const bigNum = (123456789012345678901n);
+console.log(bigNum);
+
+let empDetails = {
+    name: "Deekshith",
+    age: 25,
+    isActive: true,
+    address: {
+        city: "Bangalore",
+        state: "Karnataka"
+    }
+};
+
+let newEmpDetails = empDetails;
+newEmpDetails.name = "Vishnu";
+console.log(newEmpDetails.name);// "Vishnu"
+newEmpDetails.name = "Kumar";// "Kumar"a
+console.log(empDetails.name); // Both will show "Vishnu" because objects are reference
+
+const getName = new String("Deekahirh")
+console.log(getName);
+console.log(getName.toUpperCase()); // "deekahirh"
+console.log(getName.__proto__); // String.prototype
+console.log(typeof getName); // object, because String is an object wrapper
 
 
 </script>
+
+
 
 </html>
