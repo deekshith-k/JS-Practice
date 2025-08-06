@@ -80,6 +80,134 @@ console.log(getName.toUpperCase()); // "deekahirh"
 console.log(getName.__proto__); // String.prototype
 console.log(typeof getName); // object, because String is an object wrapper
 
+console.log(getName.slice(0, -4)); // "Deek" 
+
+const newName = "   Deeki Kumar   ";
+console.log(newName);
+
+console.log(newName.trim()); // "Deeki Kumar"
+
+console.log(newName.replace("Kumar", "Vishnu")); // "   Deeki Vishnu   "
+
+console.log(newName.includes("l")); // false, because "l" is not in the string
+
+const Name = "Rameshwaran Rai"; // "Rameshwaran Rai"
+
+console.log(Name.split("_")); // ["Rameshwaran", "Rai"]
+
+console.log(Name.replace("Rai" , "Shetty")); // 
+
+const valueNum = new Number("123");
+console.log(valueNum); // Number {123}
+
+console.log(valueNum.toFixed(2)); // "123.00"
+
+const valueNums =  new Number("123.456");
+
+console.log(valueNums.toPrecision(2)); // "1.2e+2"
+console.log(valueNums.toPrecision(5)); // "123.00"
+
+
+const money = 987654345678;
+console.log(money.toLocaleString('en-IN')); // "9,87,65,43,45,678"
+
+//floor : least value integer {math.floor(2.9) = 2 }
+// ceil : greatest value integer {math.ceil(2.1) = 3 }
+// round : nearest value integer {math.round(2.5) = 3 }
+
+console.log(Math.ceil(Math.random()*2000)); // Random number between 0 and 2000
+
+const date = new Date(2025, 3, 16, 7, 30, 0); // Date object for April 16, 2025, 07:30:00
+// console.log(date.toLocaleString());
+// console.log(date.toLocaleDateString());
+// console.log(date.toDateString());
+
+console.log(date.toDateString()); 
+
+date.toLocaleString('default', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+}); // "Wednesday, April 16, 2025, 07:30 AM"
+
+
+const dataNum = new Array(1, 2, 3, 4, 5);
+console.log(dataNum[0]); // 5
+console.log(dataNum.length); // 5
+
+dataNum.push(6); // Add 6 to the end of the array
+console.log(dataNum); // [1, 2, 3, 4, 5, 6]
+dataNum.pop(); // Remove the last element (6)
+console.log(dataNum); // [1, 2, 3, 4, 5]
+
+console.log(dataNum.unshift(0)); // Remove the first element (1)
+
+console.log(dataNum.includes(3)); // true, because 3 is in the array
+
+let newArr = dataNum.join(" , "); // "0 - 2 - 3 - 4 - 5"
+console.log(newArr);    
+
+const actor = ["Raj,", "Shivanna", "Puneeth", "Yash"];
+const actress = ["Deepika", "Katrina", "Priyanka", "Alia"];
+actor.push(actress)
+console.log(actor); // ["Raj,", "Shivanna", "Puneeth", "Yash", "Deepika", "Katrina", "Priyanka", "Alia"]
+
+const actors = actor.concat(actress); // Combine both arrays
+console.log(actors); // ["Raj,", "Shivanna", "Puneeth",
+console.log(actor[2][1]) // "Shivanna", because actor[2] is "Puneeth" and actress[1] is "Katrina"
+
+const allActors = [...actor, ...actress] // Spread operator to combine both arrays
+console.log(allActors); // ["Raj,", "Shivanna", "Puneeth", "Yash", "Deepika", "Katrina", "Priyanka", "Alia"]
+
+const newArrayNum = [1, 2, 3, 4, [43, 23, 1], 5, [-1, -2, -3]];
+const flatArrayNum = newArrayNum.flat(2); // Flatten the array
+console.log(flatArrayNum); // [1, 2, 3, 4, 43, 23, 1, 5, -1, -2, -3]
+
+
+const stringArray = ("Hello", "World");
+console.log(Array.isArray(stringArray)); // false, because stringArray is not an array
+console.log(Array.from(stringArray)); // ["Hello", "World"], converts string to array
+
+
+let subOne = "Maths";
+let subTwo = "Science";     
+let subThree = "Social";
+console.log(Array.of(subOne, subTwo, subThree));
+
+
+// Object Literals
+
+const symFor = Symbol("name");
+
+const employee = {
+    name: "Deekshith",
+    age: 25,
+    [symFor] : "Deekshith Prepare Sysmbol",
+    isActive: true,
+    address: {
+        city: "Bangalore",
+        state: "Karnataka"
+    }
+};
+
+console.log(employee.email);    // undefined, because email property does not exist
+console.log(employee["email"]); // undefined, because email property does not exist
+// These will be return method for objects 
+
+// employee[symFor] = "Deekshith"; // Add a symbol property
+// console.log(employee[symFor]); // "Deekshith", because we added a symbol
+console.log(employee[symFor]); 
+console.log(typeof employee[symFor]);// Sysmbol will call aloways on object inside [] 
+
+
+// To freeze the object
+employee.name = "Vishnu"; // Change the name property
+Object.freeze(employee); // Freeze the object, preventing further modifications
+console.log(employee.name); // "Vishnu", because we changed the name property before freezing
+console.log(employee)
 
 </script>
 
