@@ -166,17 +166,21 @@ const newArrayNum = [1, 2, 3, 4, [43, 23, 1], 5, [-1, -2, -3]];
 const flatArrayNum = newArrayNum.flat(2); // Flatten the array
 console.log(flatArrayNum); // [1, 2, 3, 4, 43, 23, 1, 5, -1, -2, -3]
 
+// ===================================================
 
 const stringArray = ("Hello", "World");
 console.log(Array.isArray(stringArray)); // false, because stringArray is not an array
 console.log(Array.from(stringArray)); // ["Hello", "World"], converts string to array
 
+// ===================================================
+
 
 let subOne = "Maths";
 let subTwo = "Science";     
 let subThree = "Social";
-console.log(Array.of(subOne, subTwo, subThree));
+console.log(Array.of(subOne, subTwo, subThree)); // ["Maths", "Science", "Social"], creates an array from the arguments
 
+// ===================================================
 
 // Object Literals
 
@@ -197,19 +201,100 @@ console.log(employee.email);    // undefined, because email property does not ex
 console.log(employee["email"]); // undefined, because email property does not exist
 // These will be return method for objects 
 
+// ===================================================
+
 // employee[symFor] = "Deekshith"; // Add a symbol property
 // console.log(employee[symFor]); // "Deekshith", because we added a symbol
 console.log(employee[symFor]); 
 console.log(typeof employee[symFor]);// Sysmbol will call aloways on object inside [] 
 
+// ===================================================
+
 
 // To freeze the object
 employee.name = "Vishnu"; // Change the name property
-Object.freeze(employee); // Freeze the object, preventing further modifications
+// Object.freeze(employee); // Freeze the object, preventing further modifications
 console.log(employee.name); // "Vishnu", because we changed the name property before freezing
 console.log(employee)
 
+// ===================================================
+
+employee.greetng = function(){
+    console.log("Hello," + this.name);
+    console.log(`Your Age is ${this.age}`);
+}
+
+
+console.log(employee.greetng()); // "Hello, Vishnu", because we added a greetng method
+
+// ===================================================
+
+const payment = {
+    mode : "Online",
+    type : {
+        methodPay : "UPI",
+        application : {
+            apps : "PhonePe",
+            network : "Airtel"
+        }
+    }
+};
+
+
+console.log(payment.type.application);// { apps: 'PhonePe', network: 'Airtel' }
+
+// ==================== Combine Objects ======================
+const fruits = {apple: 10, banana: 20, orange: 30};
+const vegetables = {carrot: 5, potato: 15, tomato: 25};
+
+const groceryBill = Object.assign({}, fruits, vegetables); // Combine two objects into one
+console.log(groceryBill); // { apple: 10, banana: 20, orange: 30, carrot: 5, potato: 15, tomato: 25 }
+
+const groceryBillCopy = {...fruits, ...vegetables}; // Spread operator to combine two objects
+console.log(groceryBillCopy); // { apple: 10, banana: 20, orange: 30, carrot: 5, potato: 15, tomato: 25 }
+
+// ===================================================
+
+
+const data = [
+    { id: 1, name: "Deekshith", age: 25 },
+    { id: 2, name: "Vishnu", age: 30 },
+    { id: 3, name: "Kumar", age: 28 }
+];
+
+const dataName = data.map(items => items.name); // Extract names from the objects
+console.log(dataName); // ["Deekshith", "Vishnu", "Kumar"]  
+
+// const dataMap = data.map(item => {
+//     return { ...item, age: item.age + 1 }; // Increment age by 1
+// });
+
+// console.log(dataMap); // [{ id: 1, name: "Deekshith", age: 26 }, { id: 2, name: "Vishnu", age: 31 }, { id: 3, name: "Kumar", age: 29 }]
+
+console.log(data[1].name);// "Vishnu", because data[1] is the second object in the array
+
+console.log(Object.keys(data[0]));//
+console.log(Object.values(data));
+console.log(Object.entries(data));
+console.log(data[0].hasOwnProperty("id")); // true, because the first object has an "id" property   
+console.log(data.hasOwnProperty("id"));  // false, because the array itself does not have an "id" property
+
+const dishes ={
+    dishOne: "Biryani",
+    dishTwo: "Pulao",
+    dishThree: "Fried Rice"
+};
+
+// Destructuring object
+const {dishess :dish} = dishes; // Destructuring to extract the entire dishes object
+console.log(dish);// { dishOne: "Biryani", dishTwo: "Pulao", dishThree: "Fried Rice" }
+const {dishesOne} = dishes; // Destructuring to extract dishOne
+console.log(dishesOne); // "Biryani", because we extracted dishOne from the dishes object   
+
+
 </script>
+
+
 
 
 
