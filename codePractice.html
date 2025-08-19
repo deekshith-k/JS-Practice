@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code question practice</title>
+</head>
+<body>
+    <h4>Coding Practice</h4>
+</body>
+
+<script>
+    //// Reverse a string
+
+    // var str = "Deekshith";
+    // // var reversedStr = str.split("").reverse().join('');
+    // console.log(reversedStr); // Output: "htihskeeD"
+
+var str = "Deekshith";
+
+function reversedStr(str) {
+    let reversedStr = str.split("").reverse().join('');
+    // console.log("Reversed string is: " + reversedStr);
+    return reversedStr;
+}
+
+console.log(reversedStr(str)); // Output: "htihskeeD"
+
+
+// checking number is even or odd
+
+var num = 17;
+function isEvenorOdd(num){
+    // return num % 2 === 0 ? "Even" : "Odd";
+    if(num % 2 === 0){
+        return "Even";
+    } else {
+        return "Odd";
+    }
+}
+
+console.log(isEvenorOdd(num)); // Output: "Even"
+
+
+// MAximum Number in an array
+
+var arr = [10, 20, 30, 40, 50];
+var maxNumber = Math.max(...arr)
+console.log("Maximum number in the array is: " + maxNumber); // Output: 50
+
+// Sum of all numbers in an array
+var arr2 = [10, 20, 30, 40, 50];
+let sum = arr2.reduce(() => (accumulator, currentValue) => accumulator + currentValue, 0);
+console.log("Sum of all numbers in the array is: " + sum); // Output: 150
+
+
+// Count vowels in a string
+var str2 = "Deekshith";
+function countVowels(Str2){
+    return str2.match(/[aeiou]/gi).length || 0; // Using regex to match vowels and count them
+}
+console.log("Number of vowels in the string is: " + countVowels(str2)); // Output: 4
+
+// generate random number
+let randomNumber = Math.floor(Math.random() * 9000) + 1000;
+console.log("Random number is: " + randomNumber); // Output: Random number between 1000 and 9999
+
+// check if sring is palindrome
+var str3 = "madam";
+function isPalindrome(str3) {
+    let reversedStr3 = str3.split("").reverse().join('');
+    return str3 === reversedStr3 ? "Palindrome" : "Not a Palindrome";
+}
+console.log(isPalindrome(str3)); // Output: "Palindrome"
+
+
+function isPalindromes(str){
+    let parts = str.split(" ");
+    let results = [];
+    for(let part of parts){
+        let reversedPart = part.split("").reverse().join('');
+        if(part == reversedPart){
+            results.push("Palindrome");
+        } else {
+            results.push("Not a Palindrome");
+        }
+    }
+    return results;
+    // return parts.map(part => part === part.split("").reverse().join('') ? "Palindrome" : "Not a Palindrome");
+    // return str.split("").map(part=> part === part.split("").reverse().join('') ? "Palindrome" : "Not a Palindrome");
+}
+
+console.log(isPalindromes("level 121"));
+
+
+// Sort an array of numbers
+let data = [5, 3, 8, 1, 2];
+data.sort((a,b) => a - b);
+console.log("Sorted array is: " + data); // Output: [1, 2, 3, 5, 8]
+
+// Fetch data from an API
+fetch('https://api.github.com/users/deekshith-k')
+.then(response => response.json())
+.then(data => {
+    console.log("User data fetched from API: ", data);
+})
+.catch(error => {
+    console.error("Error fetching data: ", error);
+});
+
+
+
+// Template literals and tagged templates
+function greeting(name){
+    return `Hello, ${name}`;
+}
+
+console.log(greeting("Deekshith")); // Output: "Hello, Deekshith"
+
+function customGreet(string, ...messages){
+    console.log(string);
+    console.log(messages);
+    return messages.map(message => `Hello` + string[0], `${messages}`);
+}
+
+let user = "Deekshith";
+let messages = 'is study period';
+
+console.log(customGreet`Hello ${user}, ${messages}`);
+
+
+// remove dublicates
+
+/// program 01
+let number = [1, 2, 3, 4, 2, 5, 1, 2,4,6];
+
+let dublicateNumber  = [...new Set(number)];
+console.log(dublicateNumber);
+
+// program 02
+
+let nums = [1, 2, 3, 4, 2, 5, 1, 2, 4, 6];
+let uniqueNumber = nums.filter((item, index) => nums.indexOf(item) === index)
+console.log(uniqueNumber); // Output: [1, 2, 3, 4, 5, 6]
+
+// program 03
+// Using Set to remove duplicates from an array of objects
+
+let userDetail=[
+    {id:1,name:"Deeki"},
+    {id:2, name:"Deekshith"},
+    {id:1, name:"Deeki"}
+]
+
+let uniqueUserDetail = userDetail.filter((user,index, self) =>
+    // index === self.findIndex(u => u.id  === user.id && u.name === user.name)
+    index === self.findIndex(u => u.id === user.id )
+);
+
+console.log(uniqueUserDetail);
+
+// program 04
+// duplicte in string
+
+let strText = "Deekshith";
+let uniqueString = [...new Set(strText)].join('');
+console.log(uniqueString);
+
+</script>
+</html>

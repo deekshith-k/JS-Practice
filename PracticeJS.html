@@ -12,25 +12,90 @@
 <script>
     
 // Functions
-
+// { if there is nothing to return method of a function will perform as outside with console values}
 function addingNumbers(num1, num2){
-    console.log(num1 + num2);
+   return val = num1 + num2;
+    // console.log(num1 + num2);
 }
+
+console.log(addingNumbers(10, 20)); // 30, because 10 + 20 = 30
+
 
 addingNumbers(10, null); // 10, because null is treated as 0 in addition
 addingNumbers(10, undefined); // NaN, because undefined is not a number
 addingNumbers(10, "20"); // "1020", because "20" is a string and concatenation occurs
 addingNumbers(10, "20" + 30); // "102030", because "20" + 30 is evaluated as "2030" and then concatenated with 10
 
-const number = addingNumbers(10, 20); // undefined, because the function does not return a value
-console.log(number); // undefined, because the function does not return a value
+const number = addingNumbers(10, 20);// 30, because the function returns the sum of 10 and 20
+console.log(number); // 30, because the result of the function is stored in the variable number
+
 
 function subbractingNumbers(num1, num2){
     let sum = num1 -num2;
     return sum;
 }
 
-subtractingNumbers(10, 5); // 5, because 10 - 5 = 5
+subbractingNumbers(10, 5); // 5, because 10 - 5 = 5
 console.log(subbractingNumbers(10, 5)); // 5, because the function returns the result of the subtraction
+
+const result = subbractingNumbers(10, 5);
+console.log(result); // 5, because the result of the function is stored in the variable result
+
+function userPassword(username, password){
+    if (username == "admin" && password == "admin123"){  // && will check both conditions : || will check either of the conditions
+        return `Login Sucessful with ${username} and ${password}`;  
+    }
+    return `Login Failed with ${username} and ${password}`;     
+}
+
+console.log(userPassword("admin", "admin123"));
+
+// Function with Object
+const user = {
+    name: "Deekshith",
+    age: 25,    
+}
+
+function userDetails(user){
+    return `User Name is ${user.name} and age is ${user.age}`;
+}
+
+console.log(userDetails(user)); // User Name is Deekshith and age is 25
+
+
+// Function with Array
+const myArrayDetail = [100, 200, 300];
+function arrayDetails(newarr){
+    return newarr[0] + newarr[1];
+}
+
+console.log(arrayDetails(myArrayDetail)); // 300, because 100 + 200 = 300
+console.log(arrayDetails([200, 300, 400])); // 500, because 200 + 300 = 500
+
+
+function FirstFun(){
+    const peopleName = "ShreeRam";
+    function secondFun(){
+        const peopleAge = 30;
+        console.log(peopleName); // ShreeRam, because secondFun is inside FirstFun and can access its variables
+        function thirdFun(){
+            console.log(peopleAge); // 30, because thirdFun is inside secondFun and can access its variables
+        }
+        thirdFun(); // Call thirdFun to execute it
+    }
+    secondFun(); // Call secondFun to execute it
+}
+FirstFun(); // Call FirstFun to execute it
+
+// =========== 01 ===========s
+console.log(value(20)); 
+function value(num1){
+    return num1 + 1;
+}
+// ======= 02===========
+const otherValue = function(num1){
+    return num1 + 20;
+}
+console.log(otherValue(20)); // 40, because 20 + 20 = 40
 </script>
 </html>
