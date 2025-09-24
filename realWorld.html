@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+     body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 10px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 250px;
+    }
+    .error {
+      color: red;
+      font-size: 0.9rem;
+      height: 1.2rem;
+    }
+    #sendRegister, #clearForm {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      width: 120px;
+      text-align: center;
+    }
+    #clearForm {
+      background-color: #6c757d;
+    }
+    </style>
+</head>
+<body>
+    <form action="" id="registerForm" novalidate>
+        <input type="text" id="username" placeholder="Username">
+        <label for="username" id="usernameError" class="error"></label>
+        
+        <input type="email" id="email" placeholder="Email">
+        <label for="email" id="emailError" class="error"></label>
+        
+        <input type="password" id="password" placeholder="Password">
+        <label for="password" id="passwordError" class="error"></label>
+        
+        <input type="password" id="confirmPassword" placeholder="Confirm Password">
+        <label for="confirmPassword" id="confirmPasswordError" class="error"></label>
+        
+    </form>
+    <div id="sendRegister">Register</div>
+    <div id="clearForm">Reset</div>
+</body>
+<script>
+    const form = document.getElementById("registerForm");
+    const username = document.getElementById('username');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+
+    const usernameError = document.getElementById('usernameError');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+    const confirmPasswordError = document.getElementById('confirmPasswordError');
+    const sendRegister = document.getElementById('sendRegister');
+    const clearForm = document.getElementById('clearForm');
+
+    // Register button click
+    sendRegister.addEventListener('click', () => {
+      // Reset old errors
+      usernameError.textContent = "";
+      emailError.textContent = "";
+      passwordError.textContent = "";
+      confirmPasswordError.textContent = "";
+
+      let isValid = true;
+
+      if (username.value === "") {
+        usernameError.textContent = "Username is required";
+        isValid = false;
+      }
+
+      if (!email.value.includes('@') || !email.value.includes('.')) {
+        emailError.textContent = "Please enter a valid email address";
+        isValid = false;
+      }
+
+      if (password.value.length < 6) {
+        passwordError.textContent = "Password must be at least 6 characters long";
+        isValid = false;
+      }
+
+      if (password.value !== confirmPassword.value) {
+        confirmPasswordError.textContent = "Passwords do not match";
+        isValid = false;
+      }
+
+      if (isValid) {
+        sendRegister.style.backgroundColor = "green";
+        sendRegister.textContent = "Registration Successful";
+        form.reset();
+      }
+    });
+    // Reset button click
+    clearForm.addEventListener('click',()=>{
+        form.reset();
+        usernameError.textContent = "";
+        emailError.textContent = "";
+        passwordError.textContent = "";
+        confirmPasswordError.textContent = "";
+        sendRegister.style.backgroundColor = "#007bff";
+        sendRegister.textContent = "Register";
+
+        
+    });
+</script>
+</html>

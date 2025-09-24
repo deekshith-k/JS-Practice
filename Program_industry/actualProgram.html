@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actuall Program</title>
+</head>
+<body>
+      <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .todo-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 320px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .input-section {
+      display: flex;
+      gap: 10px;
+    }
+    input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      padding: 8px 12px;
+      border: none;
+      background: #007BFF;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+    li {
+      background: #f9f9f9;
+      margin: 6px 0;
+      padding: 8px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .delete {
+      background: red;
+      border: none;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+</style>
+    <p>Actuall Program List</p>
+    <div class="todo-container">
+        <h2>To DO List</h2>
+        <div class="input-search">
+            <input type="text" name="" id="taskInput" placeholder="Enter Task">
+            <button id="addTaskBtn">Add Task</button>
+        </div>
+        <ul id="taskList"></ul>
+
+    </div>
+</body>
+
+<script>
+   const taskInput = document.getElementById('taskInput');
+   const addTaskBtn = document.getElementById('addTaskBtn');
+   const taskList = document.getElementById('taskList');
+
+   function addtask(){
+    const taskText = taskInput.value.trim();
+    if(taskText === ''){
+        alert('Please enter a task');
+        return;
+    }
+
+    const li =document.createElement('li');
+    li.textContent = taskText;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.classList.add('delete');
+    deleteBtn.onclick = function(){
+        taskList.removeChild(li);
+    }
+    // deleteBtn.onclick = () => taskList.removeChild(li);
+
+    li.appendChild(deleteBtn);
+    taskList.appendChild(li);
+    taskInput.value = "";
+   }
+   // Adding task on clicking Add Task button
+   addTaskBtn.addEventListener('click', addtask);
+   // Adding task on pressing Enter key
+   taskInput.addEventListener('keypress', function(pressKey){
+    if (pressKey.key === 'Enter Key Value'){
+        addtask();
+    }
+   });
+   
+</script>
+</html>

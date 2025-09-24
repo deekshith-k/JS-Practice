@@ -291,6 +291,17 @@ console.log(dish);// { dishOne: "Biryani", dishTwo: "Pulao", dishThree: "Fried R
 const {dishesOne} = dishes; // Destructuring to extract dishOne
 console.log(dishesOne); // "Biryani", because we extracted dishOne from the dishes object   
 
+// Function to swap two numbers using destructuring
+function swapNumber(a,b){
+    [a,b] = [b,a];
+    return [a,b];
+}
+
+let a = 10;
+let b = 20;
+let swappedNumbers = swapNumber(a,b);
+console.log(swappedNumbers);
+
 
 </script>
 

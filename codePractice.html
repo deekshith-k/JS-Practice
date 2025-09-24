@@ -53,6 +53,12 @@ var arr2 = [10, 20, 30, 40, 50];
 let sum = arr2.reduce(() => (accumulator, currentValue) => accumulator + currentValue, 0);
 console.log("Sum of all numbers in the array is: " + sum); // Output: 150
 
+// SUm of array using rest operator
+
+function sumOfArray(...arr){
+    return arr.reduce((accu, curr) => accu + curr, 0);
+}
+console.log(`summ of array is : ${sumOfArray(...arr)}`);
 
 // Count vowels in a string
 var str2 = "Deekshith";
@@ -120,7 +126,7 @@ console.log(greeting("Deekshith")); // Output: "Hello, Deekshith"
 function customGreet(string, ...messages){
     console.log(string);
     console.log(messages);
-    return messages.map(message => `Hello` + string[0], `${messages}`);
+    return messages.map(messages => `Hello` + string[0], `${messages}`);
 }
 
 let user = "Deekshith";
@@ -166,5 +172,185 @@ let strText = "Deekshith";
 let uniqueString = [...new Set(strText)].join('');
 console.log(uniqueString);
 
+// Refeference type with objects
+
+let country = {name : "India"}
+function display(country){
+    country.name = "USA";
+    console.log(country.name);
+}
+
+display(country);
+console.log(country.name);
+// return display(country);
+// console.log(country.name);
+
+// OOPS Concept in JS
+
+// 1. Object 
+
+let person = {
+    name : "Rama",
+    age : 19,
+    verify : function (){
+        console.log(`Employee ${this.name} is verified by EDU`);
+    }
+}
+person.verify();
+
+
+// 2 . Class
+
+class Food{
+    constructor(fName){
+        this.fName = fName;
+    }
+    order(){
+        console.log(this.fName + " has been ordered repeatedly")
+    }
+}
+
+const breakfast = new Food("Dosa");
+breakfast.order();
+
+// 3. Inhertance 
+
+class lunch extends Food{
+    order(){
+        console.log(this.fName + " is been order succesful")
+    }
+}
+
+const Meals = new lunch("Biriyani");
+Meals.order();
+
+// 4. Encapsulation 
+
+
+        // Class operarion
+        class BankAccount {
+            #balance;//private field 
+
+            constructor(owner, initialBalance) {
+                this.owner = owner;
+                this.#balance = initialBalance;
+            }
+
+            // getter
+            getBalance() {
+                return `current balance : ${this.#balance}`;
+            }
+
+            //setter 
+            deposit(amount) {
+                if (amount > 0) {
+                    this.#balance += amount;
+                    console.log(`Deposited: ${amount}`);
+                }
+                else {
+                    console.log("Invalid deposit amount");
+                }
+            }
+            withdraw(amount) {
+                if (amount > 0 && amount <= this.#balance) {
+                    this.#balance -= amount;
+                    console.log(`withdraw amount ${amount}`);
+                }
+                else {
+                    console.log("Insufficient funds or invalid amount");
+                }
+            }
+        }
+        let acc = new BankAccount("Deekshith", 10000);
+        console.log(acc.getBalance());
+        acc.deposit(1000);
+        console.log(acc.getBalance());
+        acc.withdraw(1000);
+        console.log(acc.getBalance());
+
+        // Closure 
+
+        function createAccount(owner, initialBalance) {
+            let balance = initialBalance; // private value
+
+            return {
+                getOwner: () => owner,
+                getBalance: () => balance,
+                deposit: amount => {
+                    if (amount > 0) balance += amount;
+                },
+                withdraw: amount => {
+                    if (amount > 0 && amount <= balance) balance -= amount;
+                }
+            }
+        }
+        const account = createAccount("Shreerama", 30000);
+        console.log(account.getBalance());
+        console.log(account.getOwner());
+        account.deposit(40800);
+        console.log(account.getBalance());
+        account.withdraw(9000);
+        console.log(account.getBalance());
+
+// 5. Polymorphism
+
+class former{
+    agriculture(){
+        console.log("furtilizing");
+    }
+}
+
+class crop extends former{
+    agriculture(){
+        console.log("rice growing");
+    }
+}
+
+let agri = new former();
+let landing = new crop();
+agri.agriculture();
+landing.agriculture();
+
+
+/// Hoisting 
+
+console.log(a);//undefined 
+var a =10;
+// const a =10; and let a =10 where shows as variable can not be initialized 
+console.log(a);
+
+
+inviting();
+function inviting(){
+    console.log("Welcome to Birthday Party");
+}
+
+//// Try, catch, Finally 
+try{
+    console.log("Opening File.. ")
+    throw new("File Not Found!");
+}
+catch(error){
+    console.log("Error", error.message)
+}
+finally{
+    console.log("Clossing File...")
+}
+
+//2.
+
+function divide(a,b){
+    if( b === 0){
+        throw new Error("Division by zero is nit allowed");
+    }
+    return a/b;
+}
+
+try{
+    console.log(divide(10/0));
+}
+catch(error){
+    console.log("custom error:", error.message);
+}
 </script>
 </html>
