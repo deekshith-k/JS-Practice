@@ -1,2 +1,2 @@
 # JS-Practice
-Javascript Recal Practice
+Javascript Recall Practice 
