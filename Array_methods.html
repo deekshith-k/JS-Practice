@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+
+
+    var arr = new Array(5);
+    arr[1] = 10;
+    arr[5] = [1, 2, 3, 4, 5];
+    console.log(arr[1] * 10);
+
+
+    var favnums = [108, 12, 43, 7657, 565, 4547, 8, 34, 3434, 232, 556, 899, 457, 90];
+    console.log(favnums);
+    for (var i = 0; i < favnums.length; i++) {
+        console.log(favnums[i]);
+    }
+
+
+    function finArr(val, index, array) {
+        // console.log(val);
+        // console.log(index);
+        // console.log(array); 
+    }
+
+    finArrays = favnums.forEach(finArr);  /// forEach method
+    console.log(finArrays);
+
+    var doubleFavnums = [];
+    // for(var i=0; i< favnums.length; i++){
+    //     doubleFavnums.push(favnums[i] * 3);      /// push method
+    // };
+
+    doubleFavnums = favnums.map(function (val) {  ///  Map method
+        return val * 3;
+    })
+    console.log(doubleFavnums);
+    console.log(typeof doubleFavnums);
+
+    console.log(favnums.every(function (val) {   /// Every method
+        return val < 100;
+    }));
+
+
+    console.log(favnums.some(function(val){  /// Some method
+        return val > 123;
+    }))
+    
+    var filterNums = favnums.filter(function (val) {  /// Filter method
+        return val < 92.3;
+    });
+
+    console.log("Filter Values : " + filterNums);
+
+    var sumData = [1, 2, 3, 4, 5];
+    var sumArr = sumData.reduce(function (ini_val, val, indx, arr) {   /// Reduce method
+        return ini_val + val;
+    }, 0);  /// Initial Value
+
+    var sumArrRight = sumData.reduceRight(function(ini_val, val){
+        return ini_val + val;
+    }, 0);  /// ReduceRight method
+
+    console.log("Array Sum: " + sumArr);
+    console.log("Right Side of Array Sum: " + sumArrRight);
+
+    console.log("Index val at 3434 is " + favnums.indexOf(3434));   /// indexOf method
+
+
+    console.log(favnums.includes(3434));  /// includes method
+
+
+    var loopObj = {
+        name: "Deekshith",
+        age: 27,
+        city: "Bangalore"
+    }
+
+    for (items in loopObj) {   /// for...in loop
+        console.log(items + " : " + loopObj[items]);  
+        console.log("Loop Obj Itms");
+    }
+
+    var numbers = [23, 45, 67, 89, 12, 90, 34, 56];
+    var randomNumber = Math.floor(Math.random() * numbers.length);
+    console.log(numbers[randomNumber]);  /// Math.random method
+
+</script>
+
+<body>
+
+</body>
+
+</html>
