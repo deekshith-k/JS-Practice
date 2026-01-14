@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Study</title>
+    <style>
+    .nav-bar{
+        padding: 0;
+        display: flex;
+        gap: 10px;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+        justify-content: center;
+        align-items: center;
+    }
+    .nav-item{
+        list-style-type: none;
+        margin: 5px;
+        padding: 5px;
+        width: 100px;
+        text-align: center;
+        border-radius: 5px;
+        font-family: Arial, Helvetica, sans-serif;
+        display: inline-flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    </style>
+</head>
+<script>
+    /* var btn = document.createElement("button");
+    btn.innerText = "Click Me"
+    btn.addEventListener("click", function(){
+        alert("You Clicked ME!");
+    });
+    document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("btnRoot").appendChild(btn);
+    }) */
+
+
+   var list = document.createElement("ul");
+   var items = ["Home", "About", "Services", "Contact"];
+   list.setAttribute("class", "nav-bar"); // set class attribute
+   items.forEach(function(data){
+   var li = document.createElement("li");
+   li.setAttribute("class", "nav-item");  // set class attribute
+    // li.innerText = data;
+    li.textContent = data;
+    list.appendChild(li);   // append li to ul
+    console.log(li);
+   })
+    document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("btnRoot").appendChild(list);
+    })
+</script>
+<body>
+    <div id="btnRoot"></div>
+</body>
+</html>

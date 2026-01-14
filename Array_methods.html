@@ -80,15 +80,32 @@
         age: 27,
         city: "Bangalore"
     }
-
+    ///// 1st Example of for...in loop
     for (items in loopObj) {   /// for...in loop
-        console.log(items + " : " + loopObj[items]);  
+        console.log(items + " : " + loopObj[items]);  //  Loop through object properties
         console.log("Loop Obj Itms");
     }
 
     var numbers = [23, 45, 67, 89, 12, 90, 34, 56];
     var randomNumber = Math.floor(Math.random() * numbers.length);
     console.log(numbers[randomNumber]);  /// Math.random method
+
+    ///////// 2nd Example of for...in loop
+    var kannadaMovies = ["KGF", "Ugramm", "Avane Srimannarayana", "Pailwan"];
+/*     for(var lang in kannadaMovies){
+        console.log(lang+":" + kannadaMovies[lang]);
+    } */
+
+/* for(const movie of kannadaMovies){   /// for...of loop
+    console.log("Movie Name: " + movie);
+    console.log(movie);
+} */
+
+
+// ForEach method example
+    kannadaMovies.forEach(function(movie , index){
+        console.log(index + " : " + movie);
+    })
 
 </script>
 

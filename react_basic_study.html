@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>React Study</title>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <div id="roots"></div>
+    
+  <script type="text/babel">
+
+    const list = React.createElement("ol", null, [  // tags, attributes, children
+      React.createElement("li", { key: 1, className: "nav-item" }, "Home"),
+      React.createElement("li", { key: 2, className: "nav-item" }, "About"),
+      React.createElement("li", { key: 3, className: "nav-item" }, "Services"),
+      React.createElement("li", { key: 4, className: "nav-item" }, "Contact")
+    ]);
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(list); // render method
+    console.log(list); 
+
+    
+    class NavBar extends React.Component {
+      data = ["HTML", "CSS", "JavaScript", "React"];
+
+      render() {
+        return (
+          <ol className="nav-bar">
+            {this.data.map((val, indx) => (
+              <li className="nav-item" key={indx}>{val}</li>
+            ))}
+          </ol>
+        );
+      }
+    }
+
+    const roots = ReactDOM.createRoot(document.getElementById("roots"));
+    roots.render(<NavBar />);
+  </script>
+</body>
+
+<style>
+  .nav-bar {
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    justify-content: center;
+  }
+
+  .nav-item {
+    list-style: none;
+    padding: 8px;
+    width: 100px;
+    text-align: center;
+  }
+</style>
+</html>
